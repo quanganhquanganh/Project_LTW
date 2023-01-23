@@ -2,7 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,18 +14,6 @@ use App\Http\Controllers\TestController;
 |
 */
 
-Route::middleware(['api'])->group(function () {
-    Route::get('/test', [TestController::class, 'test']);
-});
-
-Route::get('/test', function () {
-    return response()->json([
-        'message' => 'Hello World'
-    ]);
-});
-
-Route::get('/health', function () {
-    return response()->json([
-        'status' => 'OK'
-    ]);
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
 });

@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { ConnectedRouter as Router } from 'connected-react-router';
 import { history } from '../redux'
 import { ToastContainer } from 'react-toastify';
@@ -67,11 +67,8 @@ class App extends Component {
                                 <Route path={path.HOME} exact component={(Home)} />
                                 <Route path={path.FAQ} exact component={(Faq)} />
                                 <Route path={path.CONTACT} exact component={(Contact)} />
-                                <Route path='/health'>
-                                    <h3>
-                                        Ok
-                                    </h3>
-                                </Route>
+                                {/* <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} /> */}
+                                {/* <Route path={path.SYSTEM} component={userIsAuthenticated(System)} /> */}
                                 <Route path='/checkout'>
                                     <CheckoutOrder />
                                 </Route>
@@ -82,7 +79,6 @@ class App extends Component {
                                 <Route path='/change-password' component={userIsAuthenticated(ChangePassword)} />
                                 <Route path='/admin/login' component={adminIsNotAuthenticated(LoginAdmin)} />
                                 <Route path='/admin' component={adminIsAuthenticated(Admin)} />
-                                <Redirect to={path.HOME} />
                             </Switch>
                         </div>
                         {/* <ToastContainer

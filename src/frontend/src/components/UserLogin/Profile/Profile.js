@@ -15,7 +15,7 @@ import {
     InputGroupText,
 } from 'reactstrap'
 
-import {cloudinaryUpload} from '../../../services/userService'
+import {cloudinaryUpload,changeFLA} from '../../../services/userService'
 import userImg from '../../../assets/images/admin/avatar-placeholder.svg'
 
 class Profile extends Component {
@@ -32,7 +32,7 @@ class Profile extends Component {
 
     componentDidMount(){
         this.setState({
-            img: this.props.userInfo.picture,
+            img: this.props.userInfo.image,
             firstName: this.props.userInfo.firstName,
             lastName: this.props.userInfo.lastName
         })
@@ -68,11 +68,14 @@ class Profile extends Component {
 
     saveFLA = async ()=>{
         let data = {
-            cid: this.props.userInfo.id,
+            cid: this.props.userInfo.cid,
             firstName: this.state.firstName,
             lastName: this.state.lastName,
             image: this.state.img
         }
+        console.log('data: ',data)
+        let tmp =   await changeFLA(data)
+        this.props.reduxChangeFLA(data)
     }
 
     render() {
