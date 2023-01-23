@@ -36,9 +36,11 @@ jobs:
         env:
           CI: TRUE
       - name: Test Code Linting
-        run: npm run lint
+        run: 
+          cd src/frontend && npm run lint
       - name: Save Code Linting Report JSON
-        run: npm run lint:report
+        run: 
+          cd src/frontend && npm run lint:report
         continue-on-error: true
       - name: Annotate Code Linting Results
         uses: ataylorme/eslint-annotate-action@v2
