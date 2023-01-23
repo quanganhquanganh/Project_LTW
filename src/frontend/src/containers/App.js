@@ -69,7 +69,7 @@ class App extends Component {
                                 <Route path={path.CONTACT} exact component={(Contact)} />
                                 <Route path='/health'>
                                     <h3>
-                                        Ok
+                                        Cool
                                     </h3>
                                 </Route>
                                 <Route path='/checkout'>
